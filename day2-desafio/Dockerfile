@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk apk update && \
+RUN apk update && \
 	apk upgrade && \
 	apk add nginx
 

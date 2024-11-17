@@ -5,7 +5,7 @@ COPY ./ .
 
 RUN dotnet publish -c Release -o /app/out
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM alpine:3.15.9
 WORKDIR /app	
 
 COPY --from=build /app/out .
@@ -13,3 +13,4 @@ COPY --from=build /app/out .
 ENTRYPOINT ["./mvc-app"]
 
 # SIZE 216MB
+# 13.9, quando mudei p alpine
