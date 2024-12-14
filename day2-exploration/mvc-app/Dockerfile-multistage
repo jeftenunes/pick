@@ -10,6 +10,7 @@ WORKDIR /app
 
 COPY --from=build /app/out .
 
+VOLUME /app/data
 ENTRYPOINT ["dotnet", "./mvc-app.dll"]
 
 # SIZE 216MB
