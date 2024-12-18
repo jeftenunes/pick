@@ -1,0 +1,18 @@
+# Arquivos de configuração locais
+.terraform/
+.terraform.lock.hcl
+
+# Variáveis sensíveis (nunca versione arquivos contendo credenciais)
+*.tfvars
+*.tfstate
+*.tfstate.backup
+
+# Logs de execução
+crash.log
+*.tfplan
+
+# Backups automáticos
+*.backup
+
+# Outros arquivos temporários
+*.log

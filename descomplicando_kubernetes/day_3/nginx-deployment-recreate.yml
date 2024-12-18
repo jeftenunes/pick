@@ -12,10 +12,7 @@ spec:
     matchLabels:
       app: nginx-deployment
   strategy:
-    type: RollingUpdate
-    rollingUpdate: 
-      maxSurge: 1
-      maxUnavailable: 2
+    type: Recreate
   template:
     metadata:
       creationTimestamp: null
@@ -32,7 +29,7 @@ spec:
           requests:
             cpu: 0.25
             memory: 128Mi
-      - image: redis:7.2
+      - image: redis:latest
         name: redis
         ports:
         - containerPort: 6379

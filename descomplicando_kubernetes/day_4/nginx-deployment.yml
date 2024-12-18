@@ -32,6 +32,24 @@ spec:
           requests:
             cpu: 0.25
             memory: 128Mi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 5
+          initialDelaySeconds: 10
+        readinessProbe:
+          exec:
+            command: 
+            - curl
+            - -f
+            - http://localhost:80
+          periodSeconds: 10
+          timeoutSeconds: 10
+          successThreshold: 1
+          failureThreshold: 2
+          initialDelaySeconds: 10
       - image: redis:7.2
         name: redis
         ports:
@@ -43,3 +61,10 @@ spec:
           requests:
             cpu: 0.5
             memory: 128Mi
+        livenessProbe:
+          tcpSocket:
+            port: 6379
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+          initialDelaySeconds: 10
