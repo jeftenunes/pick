@@ -69,7 +69,7 @@ resource "aws_security_group" "allow_internal_traffic" {
     from_port   = 0
     to_port     = 65535
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["10.0.0.0/16"]
   }
 
   egress {
@@ -113,7 +113,7 @@ resource "aws_route_table_association" "public_rt_assoc" {
 
 resource "aws_instance" "control_plane" {
   provider                    = aws.us_east
-  instance_type               = "t3.micro"
+  instance_type               = "t3.medium"
   ami                         = var.ami_id_east_us
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.allow_internal_traffic.id]
@@ -137,7 +137,7 @@ resource "aws_instance" "control_plane" {
 
 resource "aws_instance" "worker1" {
   provider               = aws.us_east
-  instance_type          = "t3.micro"
+  instance_type          = "t3.medium"
   ami                    = var.ami_id_east_us
   subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.allow_internal_traffic.id]
@@ -160,7 +160,7 @@ resource "aws_instance" "worker1" {
 
 resource "aws_instance" "worker2" {
   provider               = aws.us_east
-  instance_type          = "t3.micro"
+  instance_type          = "t3.medium"
   ami                    = var.ami_id_east_us
   subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.allow_internal_traffic.id]
