@@ -72,6 +72,13 @@ resource "aws_security_group" "allow_internal_traffic" {
     cidr_blocks = ["10.0.0.0/16"]
   }
 
+  ingress {
+    from_port   = 6783
+    to_port     = 6784
+    protocol    = "udp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
   egress {
     from_port        = 0
     to_port          = 0
