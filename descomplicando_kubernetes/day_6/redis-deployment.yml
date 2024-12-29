@@ -18,7 +18,5 @@ spec:
       containers:
         - image: redis
           name: redis
-      volumes:
-        - name: redis-data
-          persistentVolumeClaim:
-            claimName: nginx-pvc
+          ports:
+            - containerPort: 6379
